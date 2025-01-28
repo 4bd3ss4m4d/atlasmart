@@ -1,0 +1,36 @@
+{
+  "name": "atlasmart-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "keywords": [
+    "ecommerce",
+    "backend",
+    "Node.js",
+    "Express",
+    "Atlasmart"
+  ],
+  "author": "Abdessamad HADDOUCHE <abdessamad.hadd@gmail.com>",
+  "license": "MIT",
+  "description": "Backend for the Atlasmart e-commerce platform. Built with Node.js and Express.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4bd3ss4m4d/atlasmart.git"
+  }
+}
