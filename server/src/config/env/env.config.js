@@ -1,7 +1,6 @@
-// src/config/env/env.config.js
 import dotenv from "dotenv";
 import { cleanEnv } from "envalid";
-import { envValidationSchema } from "./env.validate.js";
+import { envValidationSchema } from "#config/env/env.validate.js";
 
 // Load environment variables from .env file
 dotenv.config();

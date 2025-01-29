@@ -1,5 +1,5 @@
 import { Router } from "express";
-import v1Routes from "./v1/index.js";
+import v1Routes from "#routes/v1/index.js";
 
 const initializeRoutes = (app) => {
   const router = Router();

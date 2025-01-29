@@ -1,6 +1,6 @@
-import "./config/env/env.config.js";
-import app from "./app.js";
-import { config } from "./config/env/env.config.js";
+import "#config/env/env.config.js";
+import app from "#root/app.js";
+import { config } from "#config/env/env.config.js";
 
 const server = app.listen(config.server.port, () => {
   console.log(

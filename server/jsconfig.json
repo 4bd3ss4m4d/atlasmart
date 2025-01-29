@@ -1,0 +1,20 @@
+/*
+This file configures the project to support custom path aliases for a better development experience.
+It works specifically with editors like VS Code to provide:
+  1. Autocomplete suggestions for imports.
+  2. Navigation support (e.g., Ctrl+Click to go to the file).
+  3. Clean and readable absolute imports without long relative paths.
+*/
+
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "#root/*": ["./*"],
+      "#config/*": ["./config/*"],
+      "#middleware/*": ["./middleware/*"],
+      "#routes/*": ["./routes/*"],
+      "#database/*": ["./database/*"]
+    }
+  }
+}
