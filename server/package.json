@@ -39,6 +39,8 @@
     "mongodb": "^6.12.0",
     "mongoose": "^8.9.5",
     "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {

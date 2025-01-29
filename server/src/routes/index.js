@@ -1,5 +1,6 @@
 import { Router } from "express";
 import v1Routes from "#routes/v1/index.js";
+import docsRoutes from "#routes/docs/swagger.route.js";
 
 const initializeRoutes = (app) => {
   const router = Router();
@@ -12,6 +13,9 @@ const initializeRoutes = (app) => {
       timestamp: new Date().toISOString(),
     });
   });
+
+  // API Documentation
+  router.use("/docs", docsRoutes);
 
   // API versions
   router.use("/api/v1", v1Routes);
