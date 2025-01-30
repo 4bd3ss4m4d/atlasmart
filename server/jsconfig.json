@@ -14,7 +14,9 @@ It works specifically with editors like VS Code to provide:
       "#config/*": ["./config/*"],
       "#middleware/*": ["./middleware/*"],
       "#routes/*": ["./routes/*"],
-      "#database/*": ["./database/*"]
+      "#database/*": ["./database/*"],
+      "services/*": ["./services/*"],
+      "#core/*": ["./core/*"]
     }
   }
 }

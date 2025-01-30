@@ -8,7 +8,9 @@
     "#config/*": "./src/config/*",
     "#middleware/*": "./src/middleware/*",
     "#routes/*": "./src/routes/*",
-    "#database/*": "./src/database/*"
+    "#database/*": "./src/database/*",
+    "#services/*": "./src/services/*",
+    "#core/*": "./src/core/*"
   },
   "scripts": {
     "start": "node src/server.js",
