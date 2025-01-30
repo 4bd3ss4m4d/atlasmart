@@ -1,9 +1,14 @@
 import express from "express";
+import connectMongoDB from "#database/core/connectors/mongoClient.js";
+import initializeRoutes from "#routes/index.js";
+import initializeGlobalMiddleware from "#middleware/global/index.js";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Atlasmart Backend!");
-});
+connectMongoDB();
+
+initializeGlobalMiddleware(app);
+
+initializeRoutes(app);
 
 export default app;

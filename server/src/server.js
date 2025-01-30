@@ -1,12 +1,17 @@
-import app from "./app.js";
-import dotenv from "dotenv";
+import "#config/env/env.config.js";
+import app from "#root/app.js";
+import { config } from "#config/env/env.config.js";
 
-// Load environment variables
-dotenv.config();
+const server = app.listen(config.server.port, () => {
+  console.log(
+    `🚀 Server is running in ${config.server.nodeEnv} mode on http://localhost:${config.server.port}`
+  );
+  console.log(`📍 API Base URL: http://localhost:${config.server.port}/api/v1`);
+  console.log(`📄 Swagger Docs: http://localhost:${config.server.port}/docs`);
+});
 
-const PORT = process.env.PORT || 5000;
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled Promise Rejection:", err);
+  server.close(() => process.exit(1));
 });
