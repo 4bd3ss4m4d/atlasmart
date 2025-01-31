@@ -1,12 +1,50 @@
 import { CONFIGURATION_ERROR_CODES } from "#core/errors/constants/errorCodes/index.js";
 
 export const CONFIGURATION_ERROR_MESSAGES = {
-  // Configuration Error Messages
-  [CONFIGURATION_ERROR_CODES.CFG_1001]: "Configuration file not found.",
-  [CONFIGURATION_ERROR_CODES.CFG_1002]: "Invalid configuration syntax.",
-  [CONFIGURATION_ERROR_CODES.CFG_1003]:
-    "Invalid environment variable detected.",
-  [CONFIGURATION_ERROR_CODES.CFG_1004]: "Configuration validation failed.",
-  [CONFIGURATION_ERROR_CODES.CFG_1005]:
-    "Invalid application settings detected.",
+  // General Configuration Errors
+  [CONFIGURATION_ERROR_CODES.CFG_1001]: {
+    default: "A required configuration file is missing.",
+    template: "Configuration file '{{fileName}}' not found in path '{{path}}'.",
+  },
+
+  [CONFIGURATION_ERROR_CODES.CFG_1002]: {
+    default: "Configuration file contains syntax errors.",
+    template: "Syntax error in configuration file '{{fileName}}': {{reason}}",
+  },
+
+  [CONFIGURATION_ERROR_CODES.CFG_1003]: {
+    default: "One or more environment variables are invalid.",
+    template: "Invalid environment variable '{{varName}}': '{{value}}'.",
+  },
+
+  [CONFIGURATION_ERROR_CODES.CFG_1004]: {
+    default: "Configuration validation has failed.",
+    template: "Configuration validation failed: {{reason}}",
+  },
+
+  [CONFIGURATION_ERROR_CODES.CFG_1005]: {
+    default: "Application settings contain invalid values.",
+    template: "Invalid application setting '{{setting}}': {{value}}",
+  },
+
+  // Mongoose Schema Builder Errors
+  [CONFIGURATION_ERROR_CODES.CFG_2001]: {
+    default: "Invalid model name. A valid model name must be provided.",
+    template: "Invalid model name '{{modelName}}'.",
+  },
+
+  [CONFIGURATION_ERROR_CODES.CFG_2002]: {
+    default: "Invalid schema configuration.",
+    template: "Schema configuration error in model '{{modelName}}': {{reason}}",
+  },
+  [CONFIGURATION_ERROR_CODES.CFG_2003]: {
+    default:
+      "No fields were defined for the schema. A valid 'fields' object must be provided.",
+    template: "Schema fields are missing in model '{{modelName}}'.",
+  },
+  [CONFIGURATION_ERROR_CODES.CFG_2004]: {
+    default: "Invalid field configuration.",
+    template:
+      "Invalid field configuration in model '{{modelName}}': {{reason}}",
+  },
 };
