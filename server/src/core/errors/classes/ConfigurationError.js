@@ -28,7 +28,7 @@ export class ConfigurationError extends BaseError {
   /**
    * ✅ Factory method to create predefined configuration errors.
    */
-  static create(type, messageParams = null, details = null, cause = null) {
+  static create(type, messageParams = {}, details = null, cause = null) {
     const errorMapping = {
       // General Configuration Errors
       missing: CONFIGURATION_ERROR_CODES.CFG_1001,
@@ -39,6 +39,8 @@ export class ConfigurationError extends BaseError {
       // Mongoose Schema Builder Errors
       modelName: CONFIGURATION_ERROR_CODES.CFG_2001,
       schemaConfig: CONFIGURATION_ERROR_CODES.CFG_2002,
+      missingFields: CONFIGURATION_ERROR_CODES.CFG_2003,
+      invalidFields: CONFIGURATION_ERROR_CODES.CFG_2004,
     };
 
     // Check if the type exists, otherwise throw an error
@@ -51,13 +53,6 @@ export class ConfigurationError extends BaseError {
     }
 
     const errorCode = errorMapping[type];
-
-    // Validate if the error message is correctly defined
-    if (!CONFIGURATION_ERROR_MESSAGES[errorCode]) {
-      throw new Error(
-        `❌ ConfigurationError message not found for code: ${errorCode}`
-      );
-    }
 
     return new ConfigurationError(errorCode, messageParams, details, cause);
   }

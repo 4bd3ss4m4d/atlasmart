@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { config } from "#config/env/env.config.js";
 
-const connectMongoDB = async () => {
+export const connectMongoDB = async () => {
   try {
     const conn = await mongoose.connect(config.database.uri);
     console.log(`MongoDB connected successfully: ${conn.connection.host}`);
@@ -11,5 +11,3 @@ const connectMongoDB = async () => {
     process.exit(1);
   }
 };
-
-export default connectMongoDB;

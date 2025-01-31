@@ -1,1 +1,1 @@
-export { mongoClient } from "./mongoClient";
+export { connectMongoDB } from "./mongoClient.js";

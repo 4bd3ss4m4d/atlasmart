@@ -30,21 +30,21 @@ export const CONFIGURATION_ERROR_MESSAGES = {
   // Mongoose Schema Builder Errors
   [CONFIGURATION_ERROR_CODES.CFG_2001]: {
     default: "Invalid model name. A valid model name must be provided.",
-    template: "Invalid model name '{{modelName}}'. {{reason}}",
+    template: "Invalid model name '{{modelName}}'.",
   },
 
   [CONFIGURATION_ERROR_CODES.CFG_2002]: {
     default: "Invalid schema configuration.",
     template: "Schema configuration error in model '{{modelName}}': {{reason}}",
   },
-
   [CONFIGURATION_ERROR_CODES.CFG_2003]: {
-    default: "Schema definition is missing required fields.",
-    template: "Missing required fields in schema for model '{{modelName}}'.",
+    default:
+      "No fields were defined for the schema. A valid 'fields' object must be provided.",
+    template: "Schema fields are missing in model '{{modelName}}'.",
   },
-
   [CONFIGURATION_ERROR_CODES.CFG_2004]: {
-    default: "Invalid schema options provided.",
-    template: "Invalid schema options for model '{{modelName}}': {{details}}",
+    default: "Invalid field configuration.",
+    template:
+      "Invalid field configuration in model '{{modelName}}': {{reason}}",
   },
 };
