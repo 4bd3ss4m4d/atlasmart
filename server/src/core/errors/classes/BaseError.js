@@ -1,19 +1,22 @@
 import {
   generateErrorId,
   formatCause,
-} from "#core/errors/utils/error.helpers.js";
-import { config } from "#config/env/env.config.js";
+  formatErrorMessage,
+} from "#core/errors/utils/index.js";
+// import { config } from "#config/env/env.config.js";
 
 export class BaseError extends Error {
   constructor(
-    message,
+    messageConfig,
+    messageParams = {},
     statusCode,
     errorCode,
     details = [], // Stores sub-errors (e.g., multiple validation errors)
     isOperational = true, // Distinguishes expected errors from system crashes
     cause = null // Stores the original error, if any
   ) {
-    super(message, { cause });
+    const formattedMessage = formatErrorMessage(messageConfig, messageParams);
+    super(formattedMessage, { cause });
 
     // Basic error properties
     this.name = this.constructor.name;
@@ -56,7 +59,8 @@ export class BaseError extends Error {
     }
 
     // In development, include stack trace and cause chain
-    if (config.server.isDev) {
+    // if (config.server.isDev) {
+    if (true) {
       errorResponse.error.stack = this.stack;
 
       if (this.cause) {

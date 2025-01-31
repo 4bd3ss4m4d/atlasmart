@@ -7,19 +7,20 @@ import { HTTP_STATUS_CODES } from "#core/constants/httpStatusCodes.js";
  * 🔥 Handles system-related errors (e.g., crashes, memory issues).
  */
 export class SystemError extends BaseError {
-  constructor(errorCode, details = null, cause = null) {
+  constructor(errorCode, messageParams = {}, details = null, cause = null) {
     if (!SYSTEM_ERROR_MESSAGES[errorCode]) {
       throw new Error(`❌ Invalid SystemError code: ${errorCode}`);
     }
 
-    const message = SYSTEM_ERROR_MESSAGES[errorCode];
+    const messageConfig = SYSTEM_ERROR_MESSAGES[errorCode];
 
     super(
-      message,
+      messageConfig,
+      messageParams,
       HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR,
       errorCode,
       details,
-      false,
+      false, // System errors are typically non-operational
       cause
     );
   }
@@ -27,7 +28,7 @@ export class SystemError extends BaseError {
   /**
    * Factory method to create predefined system errors.
    */
-  static create(type, details = null, cause = null) {
+  static create(type, messageParams = {}, details = null, cause = null) {
     const errorMapping = {
       system: SYSTEM_ERROR_CODES.SYS_1001,
       resource: SYSTEM_ERROR_CODES.SYS_1002,
@@ -39,10 +40,22 @@ export class SystemError extends BaseError {
 
     // 🔴 Check if the type exists, otherwise throw an error
     if (!errorMapping[type]) {
-      throw new Error(`❌ Invalid SystemError type: "${type}"`);
+      throw new Error(
+        `❌ Invalid SystemError type: "${type}". Available types: ${Object.keys(
+          errorMapping
+        ).join(", ")}`
+      );
     }
 
     const errorCode = errorMapping[type];
-    return new SystemError(errorCode, details, cause);
+
+    // 🔴 Validate if the error message is correctly defined
+    if (!SYSTEM_ERROR_MESSAGES[errorCode]) {
+      throw new Error(
+        `❌ SystemError message not found for code: ${errorCode}`
+      );
+    }
+
+    return new SystemError(errorCode, messageParams, details, cause);
   }
 }
